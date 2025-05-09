@@ -19,8 +19,8 @@ function getHumanChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
-    humanChoice = humanChoice.toLowerCase()
-    if (humanChoice == "paper") {
+    let humanChoiceLower = String.prototype.toLowerCase(humanChoice);
+    if (humanChoiceLower == "paper") {
         if (computerChoice == "paper") {
             console.log("Tie!");
         }
@@ -33,7 +33,7 @@ function playRound(humanChoice, computerChoice) {
             computerScore++;
         }
     }
-    else if (humanChoice == "rock") {
+    else if (humanChoiceLower == "rock") {
         if (computerChoice == "rock") {
             console.log("Tie!");
         }
@@ -60,3 +60,22 @@ function playRound(humanChoice, computerChoice) {
         }
     }
 }
+
+function playGame() {
+    for (let i = 0; i < 5; i++) {
+        playRound(getHumanChoice(), getComputerChoice());
+    }
+    if (humanScore > computerScore) {
+        console.log("You win the game!");
+    }
+    else if (computerScore > humanScore) {
+        console.log("You lost the game!");
+    }
+    else {
+        console.log("It's a tie!");
+    }
+    console.log(`Your score: ${humanScore}`);
+    console.log(`Computer's score: ${computerScore}`);
+}
+
+playGame();
